@@ -1,0 +1,43 @@
+.page_container {
+  height: 100vmax;
+  border: 2px solid black;
+  display: grid;
+  grid: 1fr 8fr 1fr / repeat(4, 1fr);
+  grid-template-areas:
+    "header header header header"
+    "navigation article article sidebar"
+    "footer footer footer footer";
+}
+
+.page_header {
+  background-color: lightblue;
+  grid-area: header;
+}
+
+.page_content {
+  background-color: white;
+  display: contents;
+}
+
+.content_navigation {
+  background-color: blueviolet;
+  grid-area: navigation;
+}
+
+.content_article {
+  background-color: olive;
+  grid-area: article;
+}
+
+.content_side_bar {
+  background-color: red;
+  grid-area: sidebar;
+}
+
+.page_footer {
+  background-color: gray;
+  grid-area: footer;
+}
+
+@media screen and (max-width: 500px) {
+}

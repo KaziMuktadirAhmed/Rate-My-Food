@@ -1,0 +1,6 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  column-gap: 5px;
+}
