@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import Topbar from "./Topbar/Topbar";
+import Topbar from "./components/Topbar/Topbar";
 
 function App() {
   const [count, setCount] = useState(0);
