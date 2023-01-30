@@ -1,8 +1,8 @@
-import Contents from "../../components/Contents/Contents";
-import Footer from "../../components/Footer/Footer";
-import Navigation from "../../components/Navigation/Navigation";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import Topbar from "../../components/Topbar/Topbar";
+import Navigation from "../../components/Navigation/Navigation";
+import Contents from "../../components/Contents/Contents";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer";
 import styles from "./Search.module.css";
 
 function Search() {

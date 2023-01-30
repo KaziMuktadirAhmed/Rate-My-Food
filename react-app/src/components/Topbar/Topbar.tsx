@@ -9,25 +9,19 @@ import styles from "./Topbar.module.css";
 function Topbar() {
   return (
     <div className={styles.topbar}>
-      <div className={styles.topbar_contents}>
-        <TopLeft>
-          <b>user</b>
-          <b>ok</b>
-        </TopLeft>
-      </div>
-      <div className={styles.topbar_contents}>
-        <TopCenter>
-          <Searchbar />
-        </TopCenter>
-      </div>
-      <div className={styles.topbar_contents}>
-        <TopRight>
-          <b>user</b>
-          <b>ok</b>
-          <b>oki</b>
-          <b>dokie</b>
-        </TopRight>
-      </div>
+      <TopLeft>
+        <b>user</b>
+        <b>ok</b>
+      </TopLeft>
+      <TopCenter>
+        <Searchbar />
+      </TopCenter>
+      <TopRight>
+        <b>user</b>
+        <b>ok</b>
+        <b>oki</b>
+        <b>dokie</b>
+      </TopRight>
     </div>
   );
 }

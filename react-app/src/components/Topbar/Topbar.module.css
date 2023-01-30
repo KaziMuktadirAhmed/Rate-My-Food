@@ -6,8 +6,5 @@
   align-items: center;
   display: grid;
   grid: auto / 1.5fr 4fr 2fr;
-}
-
-.topbar_contents {
-  display: contents;
+  gap: 5px;
 }
