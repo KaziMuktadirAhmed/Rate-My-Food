@@ -3,3 +3,45 @@
   border: 0;
   padding: 0;
 }
+
+.page_container {
+  height: 100vmax;
+  display: grid;
+  grid: auto 8fr 1fr / repeat(4, auto);
+  grid-template-areas:
+    "header header header header"
+    "navigation article article sidebar"
+    "footer footer footer footer";
+}
+
+.page_header {
+  grid-area: header;
+}
+
+.page_content {
+  background-color: white;
+  display: contents;
+}
+
+.content_navigation {
+  background-color: blueviolet;
+  grid-area: navigation;
+}
+
+.content_article {
+  background-color: olive;
+  grid-area: article;
+}
+
+.content_side_bar {
+  background-color: red;
+  grid-area: sidebar;
+}
+
+.page_footer {
+  background-color: gray;
+  grid-area: footer;
+}
+
+@media screen and (max-width: 500px) {
+}

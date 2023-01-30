@@ -8,7 +8,7 @@ import styles from "./Topbar.module.css";
 
 function Topbar() {
   return (
-    <header className={styles.topbar}>
+    <div className={styles.topbar}>
       <div className={styles.topbar_contents}>
         <TopLeft>
           <b>user</b>
@@ -28,7 +28,7 @@ function Topbar() {
           <b>dokie</b>
         </TopRight>
       </div>
-    </header>
+    </div>
   );
 }
 

@@ -7,9 +7,12 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/Temp" element={<Temp />}></Route>
-      <Route path="/Search" element={<Search />}></Route>
+      <Route path="/*" element={<Home />}>
+        <Route path="good" element={<p>This is good</p>} />
+        <Route path="ok" element={<p>holo is ok</p>} />
+      </Route>
+      <Route path="/temp" element={<Temp />}></Route>
+      <Route path="/search" element={<Search />}></Route>
     </Routes>
   );
 }
