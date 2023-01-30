@@ -2,8 +2,9 @@ import TopRight from "./Layout/Right/TopRight";
 import TopCenter from "./Layout/Center/TopCenter";
 import TopLeft from "./Layout/Left/TopLeft";
 
-import styles from "./Topbar.module.css";
 import Searchbar from "./Searchbar/Searchbar";
+
+import styles from "./Topbar.module.css";
 
 function Topbar() {
   return (

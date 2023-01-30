@@ -1,8 +1,8 @@
 .topbar {
-  height: 15vh;
+  height: 12vh;
   width: 100%;
   margin: 0;
-  background-color: white;
+  background-color: gray;
   align-items: center;
   display: grid;
   grid: auto / 1.5fr 4fr 2fr;
