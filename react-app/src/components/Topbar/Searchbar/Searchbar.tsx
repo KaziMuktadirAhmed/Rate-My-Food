@@ -1,19 +1,27 @@
-import { ReactEventHandler, SyntheticEvent } from "react";
+import { SyntheticEvent, useRef } from "react";
 import styles from "./Searchbar.module.css";
 
-function handleClick(event: SyntheticEvent, ...prams: any) {
-  event.preventDefault();
-  console.log(event, prams);
-}
-
 function Searchbar() {
+  const itemQuery = useRef<HTMLInputElement>(null);
+  const locationQuery = useRef<HTMLInputElement>(null);
+
+  const handleClick = function (event: SyntheticEvent, ...prams: any) {
+    event.preventDefault();
+    console.log(itemQuery.current?.value, locationQuery.current?.value);
+  };
+
   return (
     <div className={styles.searchbar}>
       <input
         placeholder="Resturant, Food"
         className={`${styles.search_input} ${styles.border_right}`}
+        ref={itemQuery}
       />
-      <input placeholder="Location" className={styles.search_input} />
+      <input
+        placeholder="Location"
+        className={styles.search_input}
+        ref={locationQuery}
+      />
       <button
         className={styles.search_btn}
         type="submit"
