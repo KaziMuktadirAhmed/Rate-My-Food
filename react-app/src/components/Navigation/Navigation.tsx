@@ -1,6 +1,8 @@
+import styles from "./Navigation.module.css";
+
 function Navigation() {
   return (
-    <div>
+    <div className={styles.container}>
       <p>Navigation</p>
     </div>
   );
