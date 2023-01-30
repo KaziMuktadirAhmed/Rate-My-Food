@@ -1,14 +1,13 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import Search from "./pages/Search/Search";
 import "./App.css";
-import Topbar from "./components/Topbar/Topbar";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Topbar />
+      <Search />
       <div className="topbarContainer">
         <div className="topbarLeft">
           <span className="logo">Freakbook</span>

@@ -1,0 +1,30 @@
+.searchbar {
+  width: 100vh;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.search_input {
+  border: none;
+  flex: 0 1 85%;
+  font-size: medium;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.search_input:focus {
+  outline: none;
+}
+
+.border_right {
+  border-right: 3px solid rgb(208, 207, 207);
+}
+
+.search_icon {
+  padding-right: 10px;
+}

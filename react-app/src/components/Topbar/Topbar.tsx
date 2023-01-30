@@ -3,6 +3,7 @@ import TopCenter from "./Layout/Center/TopCenter";
 import TopLeft from "./Layout/Left/TopLeft";
 
 import styles from "./Topbar.module.css";
+import Searchbar from "./Searchbar/Searchbar";
 
 function Topbar() {
   return (
@@ -15,8 +16,7 @@ function Topbar() {
       </div>
       <div className={styles.topbar_contents}>
         <TopCenter>
-          <b>user</b>
-          <b>ok</b>
+          <Searchbar />
         </TopCenter>
       </div>
       <div className={styles.topbar_contents}>
