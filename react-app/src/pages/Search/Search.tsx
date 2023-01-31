@@ -12,9 +12,9 @@ function Search() {
         <Topbar />
       </header>
       <main className={styles.page_content}>
-        <nav className={styles.content_navigation}>
+        <aside className={styles.content_navigation}>
           <Navigation />
-        </nav>
+        </aside>
         <article className={styles.content_article}>
           <Contents />
         </article>

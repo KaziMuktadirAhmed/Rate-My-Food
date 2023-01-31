@@ -7,7 +7,7 @@
 .page_container {
   height: 100vmax;
   display: grid;
-  grid: auto 8fr 1fr / repeat(4, auto);
+  grid: auto 8fr 1fr / 1.44fr 2fr 2fr 2fr;
   grid-template-areas:
     "header header header header"
     "navigation article article sidebar"
@@ -36,7 +36,7 @@
 }
 
 .content_side_bar {
-  background-color: red;
+  background-color: white;
   grid-area: sidebar;
 }
 
