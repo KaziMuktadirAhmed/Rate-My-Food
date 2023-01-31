@@ -1,7 +1,10 @@
 /* MAP */
-#map {
+.map {
   flex: 1;
-  height: 100%;
+  height: inherit;
+  width: inherit;
+  /* position: sticky; */
+  /* z-index: 1; */
   background-color: var(--color-light--1);
 }
 

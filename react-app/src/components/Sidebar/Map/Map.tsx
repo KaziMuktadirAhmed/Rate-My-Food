@@ -1,4 +1,4 @@
-import L, { LatLngTuple, Map as LeafletMap } from "leaflet";
+import L, { LatLngExpression, LatLngTuple, Map as LeafletMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
 
@@ -20,7 +20,9 @@ function Map() {
 
     return true;
   };
+
   const getLocation = function () {
+    let coords: { success: boolean; latlng: LatLngExpression };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(loadMap, function () {
         alert("Could not get location");
@@ -31,7 +33,9 @@ function Map() {
 
   getLocation();
 
-  return <div id="map" style={{ height: "100vh" }}></div>;
+  return (
+    <div id="map" style={{ height: "100vh" }} className={styles.map}></div>
+  );
 }
 
 export default Map;
