@@ -6,6 +6,7 @@ function Home() {
     <div>
       <Outlet />
       <Map />
+      ekhane kisu nai. goto /search route to see currently implemented contents.
     </div>
   );
 }
