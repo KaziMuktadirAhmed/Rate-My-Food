@@ -7,7 +7,7 @@
 .page_container {
   height: 100vmax;
   display: grid;
-  grid: auto 8fr 1fr / 1.44fr 2fr 2fr 2fr;
+  grid: auto 5fr 1fr / 1.44fr 2fr 2fr 2fr;
   grid-template-areas:
     "header header header header"
     "navigation article article sidebar"
