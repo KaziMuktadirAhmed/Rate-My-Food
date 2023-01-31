@@ -7,12 +7,21 @@ function Map() {
   const mapZoomLevel = 13;
 
   const loadMap = function (position: any) {
-    map = L.map("map").setView(position, mapZoomLevel);
+    map = L.map("map", {
+      zoomControl: false,
+      //... other options
+    }).setView(position, mapZoomLevel);
 
     L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
       maxZoom: 20,
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
     }).addTo(map);
+
+    L.control
+      .zoom({
+        position: "topright",
+      })
+      .addTo(map);
 
     return true;
   };
