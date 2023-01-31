@@ -1,5 +1,6 @@
 import Card from "./Card/Card";
 import styles from "./Contents.module.css";
+import Paginate from "./Paginate/Paginate";
 
 function Contents() {
   let count = 0;
@@ -13,6 +14,7 @@ function Contents() {
         <Card item={item} />
       ))}
       <Card />
+      <Paginate />
     </div>
   );
 }
