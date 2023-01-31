@@ -63,7 +63,11 @@ function Map() {
   getLocation();
 
   return (
-    <div id="map" style={{ height: "100vh" }} className={styles.map}></div>
+    <div
+      id="map"
+      style={{ height: "100%", width: "100%" }}
+      className={styles.map}
+    ></div>
   );
 }
 
