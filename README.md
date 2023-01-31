@@ -1,5 +1,10 @@
 # Rate-My-Food
-This is a frotend for a resturant review website. 
+This is a frotend for a resturant review website. <br>
+
+## Location
+Practice CSS folder contains some expermental css scripts for practice purpose. <br>
+react-app folder contains the actual project. <br>
+Navigate to the project: `cd react-app`
 
 ## How to run
 Install dependencies: `npm install` <br>
