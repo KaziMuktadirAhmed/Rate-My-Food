@@ -8,7 +8,8 @@ Navigate to the project: `cd react-app`
 
 ## How to run
 Install dependencies: `npm install` <br>
-Run on localhost: `npm run dev`
+Run on localhost: `npm run dev` <br>
+On the home page go to `localhost:PORT/search` to see the final layout
 
 ## Dependencies
 Node - v19.2.0 <br>
