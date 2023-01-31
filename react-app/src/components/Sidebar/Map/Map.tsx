@@ -47,7 +47,7 @@ function Map() {
           className: styles["leaflet-popup"],
         })
       )
-      .setPopupContent(`this is a popup`)
+      .setPopupContent(`this is youre current location`)
       .openPopup();
   };
 

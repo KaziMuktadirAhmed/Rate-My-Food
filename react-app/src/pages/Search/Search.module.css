@@ -31,8 +31,9 @@
 }
 
 .content_article {
-  background-color: olive;
   grid-area: article;
+  border-left: 1px solid rgb(208, 207, 207);
+  border-right: 1px solid rgb(208, 207, 207);
 }
 
 .content_side_bar {
