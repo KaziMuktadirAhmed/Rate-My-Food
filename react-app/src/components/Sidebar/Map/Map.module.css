@@ -1,22 +1,14 @@
-:root {
-  --color-brand--1: #ffb545;
-  --color-brand--2: #00c46a;
-
-  --color-dark--1: #2d3439;
-  --color-dark--2: #42484d;
-  --color-light--1: #aaa;
-  --color-light--2: #ececec;
-  --color-light--3: rgb(214, 222, 224);
+/* MAP */
+.container {
+  flex: 1 1 auto;
+  display: flex;
+  background-color: gray;
 }
 
-/* MAP */
 .map {
-  flex: 1;
-  height: inherit;
-  width: inherit;
-  /* position: sticky; */
-  /* z-index: 1; */
-  background-color: var(--color-light--1);
+  flex: 1 1 auto;
+  padding: 2rem;
+  background-color: gray;
 }
 
 /* Popup width is defined in JS using options */
@@ -33,11 +25,4 @@
 
 .leaflet-popup .leaflet-popup-tip {
   background-color: #2d3439;
-}
-
-.running-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--2);
-}
-.cycling-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--1);
 }

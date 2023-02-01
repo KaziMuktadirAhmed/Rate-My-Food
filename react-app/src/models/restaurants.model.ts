@@ -1,6 +1,6 @@
 const resultsPerPage = 10;
 const data: any = [];
-for (let i = 0; i < 5; i++) data[i] = `data no: ${i}`;
+for (let i = 0; i < 500; i++) data[i] = `data no: ${i}`;
 
 export const getPageRange = function () {
   return Math.ceil(data.length / resultsPerPage);
