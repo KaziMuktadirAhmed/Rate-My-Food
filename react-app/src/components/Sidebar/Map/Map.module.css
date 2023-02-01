@@ -1,4 +1,3 @@
-/* MAP */
 .container {
   flex: 1 1 auto;
   display: flex;
@@ -6,23 +5,7 @@
 }
 
 .map {
-  height: 100%;
-  width: 100%;
+  flex: 1;
+  /* background-color: aqua; */
   background-color: #aaa;
-}
-
-/* Popup width is defined in JS using options */
-.leaflet-popup .leaflet-popup-content-wrapper {
-  background-color: #2d3439;
-  color: #ececec;
-  border-radius: 5px;
-  padding-right: 0.6rem;
-}
-
-.leaflet-popup .leaflet-popup-content {
-  font-size: 1.5rem;
-}
-
-.leaflet-popup .leaflet-popup-tip {
-  background-color: #2d3439;
 }

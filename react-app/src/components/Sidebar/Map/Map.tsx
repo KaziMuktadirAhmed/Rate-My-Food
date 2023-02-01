@@ -1,5 +1,7 @@
 import L, { LatLngExpression, LatLngTuple, Map as LeafletMap } from "leaflet";
+
 import "leaflet/dist/leaflet.css";
+import "./leafletStyleOverrule.css";
 import styles from "./Map.module.css";
 
 function Map() {
@@ -64,7 +66,7 @@ function Map() {
 
   return (
     <div className={styles.container}>
-      <div id="map" className={styles.map}></div>
+      <div id="map" className={styles.map} style={{ zIndex: "0" }}></div>
     </div>
   );
 }
