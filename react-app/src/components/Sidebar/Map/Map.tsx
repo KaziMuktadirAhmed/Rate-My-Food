@@ -64,11 +64,7 @@ function Map() {
 
   return (
     <div className={styles.container}>
-      <div
-        id="map"
-        // style={{ height: "100%", width: "100%" }}
-        className={styles.map}
-      ></div>
+      <div id="map" className={styles.map}></div>
     </div>
   );
 }

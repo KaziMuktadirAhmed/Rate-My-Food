@@ -2,13 +2,13 @@
 .container {
   flex: 1 1 auto;
   display: flex;
-  background-color: gray;
+  background-color: brown;
 }
 
 .map {
-  flex: 1 1 auto;
-  padding: 2rem;
-  background-color: gray;
+  height: 100%;
+  width: 100%;
+  background-color: #aaa;
 }
 
 /* Popup width is defined in JS using options */
