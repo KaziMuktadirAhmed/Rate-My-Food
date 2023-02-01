@@ -8,7 +8,7 @@ import { getSearchResultsPage } from "../../models/restaurants.model";
 import styles from "./Contents.module.css";
 
 function Contents() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const arr = getSearchResultsPage(page);
 
   return (

@@ -7,8 +7,6 @@ export const getPageRange = function () {
 };
 
 export const getSearchResultsPage = function (page = 1) {
-  //   state.search.page = page;
-  console.log(getPageRange());
   const start = (page - 1) * resultsPerPage;
   const end = page * resultsPerPage;
   return data.slice(start, end);
