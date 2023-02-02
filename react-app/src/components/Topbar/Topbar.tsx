@@ -10,17 +10,16 @@ function Topbar() {
   return (
     <div className={styles.topbar}>
       <TopLeft>
-        <b>user</b>
-        <b>ok</b>
+        <b>LOGO</b>
       </TopLeft>
       <TopCenter>
         <Searchbar />
       </TopCenter>
       <TopRight>
-        <b>user</b>
-        <b>ok</b>
-        <b>oki</b>
-        <b>dokie</b>
+        <button className={`${styles.btn} ${styles.btn_signup}`}>
+          Sign up
+        </button>
+        <button className={`${styles.btn} ${styles.btn_login}`}>Log in</button>
       </TopRight>
     </div>
   );
