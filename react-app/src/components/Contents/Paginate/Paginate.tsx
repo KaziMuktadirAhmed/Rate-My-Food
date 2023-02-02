@@ -21,6 +21,7 @@ function Paginate({ page, setPage }: any) {
       if (i === page) stylesStr += ` ${styles.page_link_active}`;
       middle.push(
         <span
+          key={i}
           className={stylesStr}
           onClick={(event: any) => changePage(parseInt(event.target.innerText))}
         >
@@ -77,7 +78,7 @@ function Paginate({ page, setPage }: any) {
           focusable="false"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M15.749 20.5c-.24 0-.48-.086-.673-.26l-8.249-7.496a1 1 0 0 1 0-1.479l8.249-7.504a1 1 0 0 1 1.346 1.478l-7.436 6.765 7.436 6.756a1.002 1.002 0 0 1-.673 1.74"
           ></path>
         </svg>
@@ -92,7 +93,7 @@ function Paginate({ page, setPage }: any) {
           focusable="false"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M8.25 20.5a1.002 1.002 0 0 1-.673-1.74l7.436-6.756-7.436-6.765a1 1 0 1 1 1.346-1.478l8.249 7.504a1 1 0 0 1 0 1.479L8.923 20.24c-.193.174-.433.26-.673.26"
           ></path>
         </svg>

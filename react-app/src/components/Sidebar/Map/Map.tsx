@@ -66,7 +66,7 @@ function Map() {
 
   return (
     <div className={styles.container}>
-      <div id="map" className={styles.map} style={{ zIndex: "0" }}></div>
+      <div id="map" className={styles.map}></div>
     </div>
   );
 }
