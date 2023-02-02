@@ -16,10 +16,8 @@ function Topbar() {
         <Searchbar />
       </TopCenter>
       <TopRight>
-        <button className={`${styles.btn} ${styles.btn_signup}`}>
-          Sign up
-        </button>
-        <button className={`${styles.btn} ${styles.btn_login}`}>Log in</button>
+        <button className={styles.btn_signup}>Sign up</button>
+        <button className={styles.btn_login}>Log in</button>
       </TopRight>
     </div>
   );
