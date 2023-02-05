@@ -1,3 +1,8 @@
+export const QUERY_TYPES = Object.freeze({
+  location: "locations",
+  restuarent: "restaurants",
+});
+
 export const requestAutocomplete = async function (
   queryString,
   type,
@@ -55,9 +60,41 @@ export const filterRestuarentAutocompleteResponse = function (res) {
 
       return {
         id,
-        Restuarent: text,
+        restuarent: text,
         addresss: { zip: zipCode, city: cityName, country: countryName },
       };
     });
   return resturantes;
+};
+
+/**
+ * @param {string} queryString The query string
+ * @param {QUERY_TYPES} queryType The query type
+ * @param {number} latitude Optional Latitude value for sorting result
+ * @param {number} longitude Optional Longitude value for sorting result
+ */
+export const getAutocompleteText = async function (
+  queryString,
+  queryType,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const result = await requestAutocomplete(
+    queryString,
+    queryType,
+    latitude,
+    longitude
+  );
+
+  if (queryType === QUERY_TYPES.location) {
+    return filterLocationAutocompleteResponse(result).map((item) => {
+      let { location } = item;
+      return location;
+    });
+  } else if (queryType === QUERY_TYPES.restuarent) {
+    return filterRestuarentAutocompleteResponse(result).map((item) => {
+      let { restuarent } = item;
+      return restuarent;
+    });
+  }
 };
