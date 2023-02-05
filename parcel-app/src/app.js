@@ -17,7 +17,6 @@ btnSearchLocation.addEventListener("click", async function (event) {
   );
 
   console.log(result);
-  return true;
 });
 
 btnSearchRestuarent.addEventListener("click", async function (event) {
@@ -31,5 +30,4 @@ btnSearchRestuarent.addEventListener("click", async function (event) {
     query.QUERY_TYPES.restuarent
   );
   console.log(result);
-  return true;
 });
