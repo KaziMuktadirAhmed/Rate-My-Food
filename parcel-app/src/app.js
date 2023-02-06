@@ -7,15 +7,10 @@ const btnSearchRestuarent = document.querySelector(".search-food-restuarnt");
 const btnSearchLocation = document.querySelector(".search-location");
 
 btnSearchLocation.addEventListener("click", async function (event) {
-  console.log("searching for locations ......");
-  //   const result = query.filterLocationAutocompleteResponse(
-  //     await query.requestAutocomplete("dhaka", query.QUERY_TYPES.location)
-  //   );
+  console.log("searching resturants for given location ......");
   let result;
   try {
-    // result = await query.requestLocationList("ChIJD7fiBh9u5kcRYJSMaMOCCwQ");
-    // result = await query.getAutocompleteText("New", query.QUERY_TYPES.location);
-    result = await query.getAvailableLocationList("paris");
+    result = await query.getAllRestuarentForALocation("Lon");
   } catch (error) {
     console.error(error);
   }
@@ -23,10 +18,10 @@ btnSearchLocation.addEventListener("click", async function (event) {
 });
 
 btnSearchRestuarent.addEventListener("click", async function (event) {
-  console.log("searching for restuarants ........");
+  console.log("searching resturants for given name ........");
   let result;
   try {
-    result = await query.getAutocompleteText("panda", QUERY_TYPES.restuarent);
+    await query.getAllRestuarentForAName("Burger");
   } catch (error) {
     console.error(error);
   }

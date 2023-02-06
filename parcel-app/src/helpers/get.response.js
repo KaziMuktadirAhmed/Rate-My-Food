@@ -2,6 +2,7 @@ import {
   requestAutocomplete,
   requestLocationList,
   requestAllRestuarentsWithCityId,
+  requestRestuarentDetails,
   QUERY_TYPES,
 } from "./query";
 
@@ -79,4 +80,50 @@ export const getAvailableLocationList = async function (
     });
 
   return filtred;
+};
+
+export const getAllRestuarentForALocation = async function (
+  queryString,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const availableLocation = await getAvailableLocationList(
+    queryString,
+    latitude,
+    longitude
+  );
+
+  const promises = availableLocation.map((item) =>
+    requestAllRestuarentsWithCityId(item.id)
+  );
+
+  const resolved = (await Promise.allSettled(promises))
+    .filter((item) => item.status === "fulfilled")
+    .reduce((accum, item) => accum.concat(item.value.data), []);
+
+  return resolved;
+};
+
+export const getAllRestuarentForAName = async function (
+  queryString,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const availableRestuarents = filterRestuarentAutocompleteResponse(
+    await requestAutocomplete(
+      queryString,
+      QUERY_TYPES.restuarent,
+      latitude,
+      longitude
+    )
+  );
+
+  const promises = availableRestuarents.map((item) =>
+    requestRestuarentDetails(item.id)
+  );
+  const resolved = (await Promise.allSettled(promises))
+    .filter((item) => item.status === "fulfilled")
+    .map((item) => item.value?.data);
+
+  return resolved;
 };
