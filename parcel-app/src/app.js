@@ -21,10 +21,12 @@ btnSearchRestuarent.addEventListener("click", async function (event) {
   console.log("searching resturants for given name ........");
   let result;
   try {
-    await query.getAllRestuarentForAName("Burger");
+    result = await query.getAllRestuarentForAName("Burger");
   } catch (error) {
     console.error(error);
   }
 
   console.log(result);
 });
+
+/// Ok
