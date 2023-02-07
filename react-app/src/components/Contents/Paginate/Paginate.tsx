@@ -1,4 +1,4 @@
-import { getPageRange } from "../../../models/restaurants.model";
+import { getPageRange } from "../../../models/contents.model";
 import styles from "./Paginate.module.css";
 
 function Paginate({ page, setPage }: any) {

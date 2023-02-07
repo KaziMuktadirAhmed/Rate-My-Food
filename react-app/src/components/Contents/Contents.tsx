@@ -3,14 +3,14 @@ import { useState } from "react";
 import Card from "./Card/Card";
 import Paginate from "./Paginate/Paginate";
 
-import { linkRender } from "../../controllers/content.controller";
-import { getSearchResultsPage } from "../../models/restaurants.model";
+import { linkContentRender } from "../../controllers/content.controller";
+import { getSearchResultsPage } from "../../models/contents.model";
 
 import styles from "./Contents.module.css";
 
 function Contents() {
   const [render, setRender] = useState(false);
-  linkRender(setRender);
+  linkContentRender(setRender);
 
   const [page, setPage] = useState(1);
   const arr = getSearchResultsPage(page);

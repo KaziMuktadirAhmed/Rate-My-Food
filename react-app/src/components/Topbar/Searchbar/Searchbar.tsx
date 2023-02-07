@@ -18,12 +18,12 @@ function Searchbar() {
   return (
     <div className={styles.searchbar}>
       <input
-        placeholder="Resturant, Food"
+        placeholder="Resturant name"
         className={`${styles.search_input} ${styles.border_right}`}
         ref={itemQuery}
       />
       <input
-        placeholder="Location"
+        placeholder="Location or address"
         className={styles.search_input}
         ref={locationQuery}
       />

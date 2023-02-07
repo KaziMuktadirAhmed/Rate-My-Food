@@ -1,12 +1,19 @@
+import { useState } from "react";
 import L, { LatLngExpression, LatLngTuple, Map as LeafletMap } from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 import "./leafletStyleOverrule.css";
 import styles from "./Map.module.css";
+import { linkMapRender } from "../../../controllers/content.controller";
+import { getCoordsAndName } from "../../../models/contents.model";
 
 function Map() {
+  const [render, setRender] = useState(false);
+  linkMapRender(setRender);
+
   let map: LeafletMap;
   const mapZoomLevel = 13;
+  const markerPositions = getCoordsAndName();
 
   const loadMap = function (position: any) {
     map = L.map("map", {
@@ -36,7 +43,13 @@ function Map() {
           const { latitude, longitude } = pos.coords;
           const coords: LatLngTuple = [latitude, longitude];
           loadMap(coords);
-          popupMarker(coords);
+          // popupMarker(coords, "this is youre current location");
+          markerPositions.map((item: any) => {
+            let {
+              geo: { latitude, longitude },
+            } = item;
+            popupMarker([latitude, longitude], item.text);
+          });
         },
         function () {
           alert("Could not get location");
@@ -46,7 +59,7 @@ function Map() {
     }
   };
 
-  const popupMarker = function (position: any) {
+  const popupMarker = function (position: any, popupString: string) {
     L.marker(position)
       .addTo(map)
       .bindPopup(
@@ -58,7 +71,7 @@ function Map() {
           className: styles["leaflet-popup"],
         })
       )
-      .setPopupContent(`this is youre current location`)
+      .setPopupContent(`${popupString}`)
       .openPopup();
   };
 
