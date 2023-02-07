@@ -14,24 +14,27 @@ function Map() {
   let map: LeafletMap;
   const mapZoomLevel = 13;
   const markerPositions = getCoordsAndName();
+  // console.log("ok", markerPositions);
 
-  const loadMap = function (position: any) {
-    if (map !== undefined) map.remove();
-
+  const initializeMap = function () {
     map = L.map("map", {
       zoomControl: false,
-    }).setView(position, mapZoomLevel);
-
-    L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
-      maxZoom: 20,
-      subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    }).addTo(map);
+    });
 
     L.control
       .zoom({
         position: "topright",
       })
       .addTo(map);
+  };
+
+  const loadMap = function (position: any) {
+    map.setView(position, mapZoomLevel);
+
+    L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+      maxZoom: 20,
+      subdomains: ["mt0", "mt1", "mt2", "mt3"],
+    }).addTo(map);
 
     return true;
   };
@@ -59,7 +62,6 @@ function Map() {
     position: any,
     popupString: string
   ) {
-    // console.log(position);
     L.marker(position)
       .addTo(map)
       .bindPopup(
@@ -76,8 +78,21 @@ function Map() {
   };
 
   useEffect(() => {
+    if (map !== undefined) {
+      map.invalidateSize();
+      map.remove();
+    }
+    initializeMap();
     getLocation();
-    console.log("hummm:", markerPositions);
+
+    markerPositions.map((item: any) => {
+      console.log("humm", item);
+      let {
+        position: { latitude, longitude },
+        text,
+      } = item;
+      popupMarker(map, [latitude, longitude], text);
+    });
   }, []);
 
   return (
