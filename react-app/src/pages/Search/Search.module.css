@@ -16,7 +16,6 @@
 
 .page_header {
   grid-area: header;
-  position: sticky;
   top: 0px;
 }
 
