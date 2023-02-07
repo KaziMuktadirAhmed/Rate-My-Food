@@ -1,51 +1,131 @@
-export const something = "ok";
+import {
+  requestAutocomplete,
+  requestLocationList,
+  requestAllRestuarentsWithCityId,
+  requestRestuarentDetails,
+  QUERY_TYPES,
+} from "./query";
 
-export const requestAutocomplete = async function (
+import {
+  filterLocationAutocompleteResponse,
+  filterRestuarentAutocompleteResponse,
+} from "./filter.response";
+
+/**
+ * @param {string} queryString The query string
+ * @param {QUERY_TYPES} queryType The query type
+ * @param {number} latitude Optional Latitude value for sorting result
+ * @param {number} longitude Optional Longitude value for sorting result
+ */
+export const getAutocompleteText = async function (
   queryString: string,
-  type: string,
+  queryType: string,
   latitude: number = NaN,
   longitude: number = NaN
 ) {
-  let url = `https://the-fork-the-spoon.p.rapidapi.com/${type}/v2/auto-complete?text=${queryString}`;
-  if (!Number.isNaN(latitude) && !Number.isNaN(longitude))
-    url += `&latitude=${latitude}&longitude=${longitude}`;
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "f85c3077admsha136a2e026f03cbp18484bjsnd14e5b467cd6",
-      "X-RapidAPI-Host": "the-fork-the-spoon.p.rapidapi.com",
-    },
-  };
-
+  let result;
   try {
-    const data = await (await fetch(url, options)).json();
-    return data;
+    result = await requestAutocomplete(
+      queryString,
+      queryType,
+      latitude,
+      longitude
+    );
   } catch (error) {
+    console.error(error);
     throw error;
+  }
+
+  if (queryType === QUERY_TYPES.location) {
+    return filterLocationAutocompleteResponse(result).map((item: any) => {
+      let { location } = item;
+      return location;
+    });
+  } else if (queryType === QUERY_TYPES.restuarent) {
+    return filterRestuarentAutocompleteResponse(result).map((item: any) => {
+      let { restuarent } = item;
+      return restuarent;
+    });
   }
 };
 
-export const filterLocationAutocompleteResponse = function (res: any) {
-  let {
-    data: { geolocation },
-  } = res;
-  let filteredRes = geolocation.map((item: any) => {
-    let {
-      id: { id, type },
-      name: { text },
-    } = item;
-    return { id, type, location: text };
-  });
-  return filteredRes;
+export const getAvailableLocationList = async function (
+  queryString: string,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const initialList = filterLocationAutocompleteResponse(
+    await requestAutocomplete(
+      queryString,
+      QUERY_TYPES.location,
+      latitude,
+      longitude
+    )
+  );
+
+  const promises = initialList.map((item: any) => requestLocationList(item.id));
+  const filtred = (await Promise.allSettled(promises))
+    .filter(
+      (item) => item.status === "fulfilled" && item.value.id_city !== undefined
+    )
+    .map((item: any) => {
+      let {
+        value: {
+          coordinates,
+          id_city,
+          prediction: { formatted_address },
+        },
+      } = item;
+      return { coordinates, id: id_city, location: formatted_address };
+    });
+
+  return filtred;
 };
 
-export const filterRestuarentAutocompleteResponse = function (res: any) {
-  let {
-    data: { autocomplete: data },
-  } = res;
-  let resturantes = data.filter(
-    (item: any) => item.__typename === "SearchAutocompleteRestaurant"
+export const getAllRestuarentForALocation = async function (
+  queryString: string,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const availableLocation = await getAvailableLocationList(
+    queryString,
+    latitude,
+    longitude
   );
-  return resturantes;
+
+  const promises = availableLocation.map((item) =>
+    requestAllRestuarentsWithCityId(item.id)
+  );
+
+  const resolved = (await Promise.allSettled(promises))
+    .filter((item) => item.status === "fulfilled")
+    .reduce((accum, item: any) => accum.concat(item.value.data), []);
+
+  return resolved;
+};
+
+export const getAllRestuarentForAName = async function (
+  queryString: string,
+  latitude = NaN,
+  longitude = NaN
+) {
+  const availableRestuarents = filterRestuarentAutocompleteResponse(
+    await requestAutocomplete(
+      queryString,
+      QUERY_TYPES.restuarent,
+      latitude,
+      longitude
+    )
+  );
+
+  const promises = availableRestuarents.map((item: any) =>
+    requestRestuarentDetails(item.id)
+  );
+  const resolved = (await Promise.allSettled(promises))
+    .filter(
+      (item) => item.status === "fulfilled" && item.value.data !== undefined
+    )
+    .map((item: any) => item.value.data);
+
+  return resolved;
 };

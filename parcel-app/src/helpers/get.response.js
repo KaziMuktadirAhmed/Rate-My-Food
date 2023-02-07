@@ -122,8 +122,10 @@ export const getAllRestuarentForAName = async function (
     requestRestuarentDetails(item.id)
   );
   const resolved = (await Promise.allSettled(promises))
-    .filter((item) => item.status === "fulfilled")
-    .map((item) => item.value?.data);
+    .filter(
+      (item) => item.status === "fulfilled" && item.value.data !== undefined
+    )
+    .map((item) => item.value.data);
 
   return resolved;
 };

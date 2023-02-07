@@ -1,4 +1,8 @@
 import { SyntheticEvent, useRef } from "react";
+import { loadEnv } from "vite";
+
+import { setLocationSearchResult } from "../../../controllers/content.controller";
+
 import styles from "./Searchbar.module.css";
 
 function Searchbar() {
@@ -8,6 +12,7 @@ function Searchbar() {
   const handleClick = function (event: SyntheticEvent, ...prams: any) {
     event.preventDefault();
     console.log(itemQuery.current?.value, locationQuery.current?.value);
+    setLocationSearchResult(locationQuery.current?.value);
   };
 
   return (
