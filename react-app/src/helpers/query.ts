@@ -16,7 +16,7 @@ export const requestAutocomplete = async function (
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9f1d12a30dmsh9ec2333159aab52p17f79ajsn738ef0eb69cf",
+      "X-RapidAPI-Key": "ad5b7b65a4msha856bcb501b1f19p165620jsncc7c9ef7f1bb",
       "X-RapidAPI-Host": "the-fork-the-spoon.p.rapidapi.com",
     },
   };
@@ -34,7 +34,7 @@ export const requestLocationList = async function (geolocationId: string) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9f1d12a30dmsh9ec2333159aab52p17f79ajsn738ef0eb69cf",
+      "X-RapidAPI-Key": "ad5b7b65a4msha856bcb501b1f19p165620jsncc7c9ef7f1bb",
       "X-RapidAPI-Host": "the-fork-the-spoon.p.rapidapi.com",
     },
   };
@@ -54,7 +54,7 @@ export const requestAllRestuarentsWithCityId = async function (
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9f1d12a30dmsh9ec2333159aab52p17f79ajsn738ef0eb69cf",
+      "X-RapidAPI-Key": "ad5b7b65a4msha856bcb501b1f19p165620jsncc7c9ef7f1bb",
       "X-RapidAPI-Host": "the-fork-the-spoon.p.rapidapi.com",
     },
   };
@@ -72,7 +72,7 @@ export const requestRestuarentDetails = async function (id_restuarent: string) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9f1d12a30dmsh9ec2333159aab52p17f79ajsn738ef0eb69cf",
+      "X-RapidAPI-Key": "ad5b7b65a4msha856bcb501b1f19p165620jsncc7c9ef7f1bb",
       "X-RapidAPI-Host": "the-fork-the-spoon.p.rapidapi.com",
     },
   };

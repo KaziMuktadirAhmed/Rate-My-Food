@@ -43,8 +43,9 @@ function Map() {
           const { latitude, longitude } = pos.coords;
           const coords: LatLngTuple = [latitude, longitude];
           loadMap(coords);
-          // popupMarker(coords, "this is youre current location");
+          popupMarker(coords, "this is youre current location");
           markerPositions.map((item: any) => {
+            console.log("in");
             let {
               geo: { latitude, longitude },
             } = item;
