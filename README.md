@@ -13,7 +13,8 @@ Navigate to the project: `cd react-app`
 
 Install dependencies: `npm install` <br>
 Run on localhost: `npm run dev` <br>
-On the home page go to `localhost:<PORT>/search` to see the progress so far.
+On the home page go to `localhost:<PORT>/search` to see the progress so far. <br>
+Press `q` to exit the developement server.
 
 ## Dependencies
 
