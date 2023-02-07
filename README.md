@@ -23,7 +23,7 @@ NPM - 9.2.0 <br>
 
 ## Update
 
-React-app folder holds the frontend done using react library.
+React-app folder holds the frontend done using react library. <br>
 After running the app in developement mode goto `/search` url to see final progress. <br>
 The Home page is still in developement. <br>
 Currently only location field works in the searchbar.
