@@ -20,3 +20,13 @@ Press `q` to exit the developement server.
 
 Node - v19.2.0 <br>
 NPM - 9.2.0 <br>
+
+## Update
+
+React-app folder holds the frontend done using react library.
+Parcel-app folder holds the frontend done using raw javascript.
+To run the raw javascript version. <br>
+
+1. go to parcel-app directory
+2. run `npm install`
+3. run `npm start`
