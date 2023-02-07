@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import L, { LatLngExpression, LatLngTuple, Map as LeafletMap } from "leaflet";
 
 import "leaflet/dist/leaflet.css";
@@ -16,9 +16,10 @@ function Map() {
   const markerPositions = getCoordsAndName();
 
   const loadMap = function (position: any) {
+    if (map !== undefined) map.remove();
+
     map = L.map("map", {
       zoomControl: false,
-      //... other options
     }).setView(position, mapZoomLevel);
 
     L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
@@ -43,14 +44,7 @@ function Map() {
           const { latitude, longitude } = pos.coords;
           const coords: LatLngTuple = [latitude, longitude];
           loadMap(coords);
-          popupMarker(coords, "this is youre current location");
-          markerPositions.map((item: any) => {
-            console.log("in");
-            let {
-              geo: { latitude, longitude },
-            } = item;
-            popupMarker([latitude, longitude], item.text);
-          });
+          popupMarker(map, coords, "this is youre current location....");
         },
         function () {
           alert("Could not get location");
@@ -60,7 +54,12 @@ function Map() {
     }
   };
 
-  const popupMarker = function (position: any, popupString: string) {
+  const popupMarker = function (
+    map: LeafletMap,
+    position: any,
+    popupString: string
+  ) {
+    // console.log(position);
     L.marker(position)
       .addTo(map)
       .bindPopup(
@@ -76,7 +75,10 @@ function Map() {
       .openPopup();
   };
 
-  getLocation();
+  useEffect(() => {
+    getLocation();
+    console.log("hummm:", markerPositions);
+  }, []);
 
   return (
     <div className={styles.container}>
