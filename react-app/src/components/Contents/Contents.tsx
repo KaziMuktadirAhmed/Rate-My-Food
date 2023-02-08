@@ -10,9 +10,9 @@ import styles from "./Contents.module.css";
 
 function Contents() {
   const [render, setRender] = useState(false);
-  linkContentRender(setRender);
-
   const [page, setPage] = useState(1);
+
+  linkContentRender(setRender, setPage);
   const arr = getSearchResultsPage(page);
 
   return (

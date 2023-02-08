@@ -4,10 +4,14 @@ import {
 } from "../helpers/request.helper";
 import { setData } from "../models/contents.model";
 
-let renderContent: any, renderMap: any;
+let renderContent: any, resetContentPage: any, renderMap: any;
 
-export const linkContentRender = function (setRender: any) {
+export const linkContentRender = function (
+  setRender: any,
+  setContentPage: any
+) {
   renderContent = setRender;
+  resetContentPage = setContentPage;
 };
 
 export const linkMapRender = function (setRender: any) {
@@ -20,6 +24,7 @@ export const setLocationSearchResult = async function (searchQuery: any) {
   console.log(result);
   setData(result);
   renderContent((prev: boolean) => !prev);
+  resetContentPage(1);
   // renderMap((prev: boolean) => !prev);
 };
 
@@ -35,6 +40,7 @@ export const setResutarantNameSearchResult = async function (searchQuery: any) {
   console.log(resultToSet);
   setData(resultToSet);
   renderContent((prev: boolean) => !prev);
+  resetContentPage(1);
 };
 
 export const setBothSearchResult = async function (
@@ -56,4 +62,5 @@ export const setBothSearchResult = async function (
   const finalResult = filtredItemResult.concat(resultLocation);
   setData(finalResult);
   renderContent((prev: boolean) => !prev);
+  resetContentPage(1);
 };
