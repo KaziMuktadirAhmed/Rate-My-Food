@@ -14,7 +14,6 @@ function Map() {
   let map: LeafletMap;
   const mapZoomLevel = 13;
   const markerPositions = getCoordsAndName();
-  // console.log("ok", markerPositions);
 
   const initializeMap = function () {
     map = L.map("map", {
@@ -32,7 +31,7 @@ function Map() {
     map.setView(position, mapZoomLevel);
 
     L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
-      maxZoom: 20,
+      // maxZoom: 20,
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
     }).addTo(map);
 
@@ -40,7 +39,6 @@ function Map() {
   };
 
   const getLocation = function () {
-    let coords: { success: boolean; latlng: LatLngExpression };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
@@ -77,23 +75,37 @@ function Map() {
       .openPopup();
   };
 
+  const moveMapToPopup = function (position: any, map: any) {
+    map.setView(position, mapZoomLevel, {
+      animate: true,
+      pan: { duration: 1 },
+    });
+  };
+
+  // console.log("just before if block");
+  // if (map !== undefined) {
+  //   console.log("in if block");
+  //   markerPositions.map((item: any) => {
+  //     console.log("humm", item);
+  //     let {
+  //       position: { latitude, longitude },
+  //       text,
+  //     } = item;
+  //     popupMarker(map, [latitude, longitude], text);
+  //   });
+  // }
+
   useEffect(() => {
+    console.log("side effect");
     if (map !== undefined) {
-      map.invalidateSize();
       map.remove();
     }
+
     initializeMap();
     getLocation();
-
-    markerPositions.map((item: any) => {
-      console.log("humm", item);
-      let {
-        position: { latitude, longitude },
-        text,
-      } = item;
-      popupMarker(map, [latitude, longitude], text);
-    });
   }, []);
+
+  // useEffect(() => {}, [render]);
 
   return (
     <div className={styles.container}>

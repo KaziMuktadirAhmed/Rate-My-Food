@@ -9,8 +9,10 @@ function Searchbar() {
   const locationQuery = useRef<HTMLInputElement>(null);
 
   const handleClick = function (event: SyntheticEvent, ...prams: any) {
+    console.log("in handler");
     event.preventDefault();
-    setLocationSearchResult(locationQuery.current?.value);
+    if (locationQuery.current?.value.length)
+      setLocationSearchResult(locationQuery.current?.value);
   };
 
   return (
