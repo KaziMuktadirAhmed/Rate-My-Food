@@ -1,4 +1,7 @@
-import { getAllRestuarentForALocation } from "../helpers/request.helper";
+import {
+  getAllRestuarentForALocation,
+  getAllRestuarentForAName,
+} from "../helpers/request.helper";
 import { setData } from "../models/contents.model";
 
 let renderContent: any, renderMap: any;
@@ -17,5 +20,19 @@ export const setLocationSearchResult = async function (searchQuery: any) {
   console.log(result);
   setData(result);
   renderContent((prev: boolean) => !prev);
-  renderMap((prev: boolean) => !prev);
+  // renderMap((prev: boolean) => !prev);
+};
+
+export const setResutarantNameSearchResult = async function (searchQuery: any) {
+  console.log(
+    `searching resturants with containing '${searchQuery}' in it's title ........`
+  );
+  const result = await getAllRestuarentForAName(searchQuery);
+  console.log(result);
+  const resultToSet = result
+    .filter((item) => item.restaurant !== undefined)
+    .map((item) => item.restaurant);
+  console.log(resultToSet);
+  setData(resultToSet);
+  renderContent((prev: boolean) => !prev);
 };

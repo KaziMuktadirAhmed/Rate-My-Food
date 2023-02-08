@@ -1,6 +1,9 @@
 import { SyntheticEvent, useRef } from "react";
 
-import { setLocationSearchResult } from "../../../controllers/content.controller";
+import {
+  setLocationSearchResult,
+  setResutarantNameSearchResult,
+} from "../../../controllers/content.controller";
 
 import styles from "./Searchbar.module.css";
 
@@ -13,6 +16,8 @@ function Searchbar() {
     event.preventDefault();
     if (locationQuery.current?.value.length)
       setLocationSearchResult(locationQuery.current?.value);
+    if (itemQuery.current?.value.length)
+      setResutarantNameSearchResult(itemQuery.current?.value);
   };
 
   return (

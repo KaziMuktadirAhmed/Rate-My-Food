@@ -10,10 +10,23 @@ function Card(props: any) {
     );
 
   const { item } = props;
+
+  let currency, range, photoSrc;
+
+  if (item.mainPhotoSrc !== undefined) photoSrc = item.mainPhotoSrc;
+  else if (item.photos !== undefined) photoSrc = item.photos[0].src;
+
+  if (item.currenciesAccepted !== undefined) currency = item.currenciesAccepted;
+  else if (item.acceptedCurrency !== undefined)
+    currency = item.acceptedCurrency;
+
+  if (item.averagePrice !== undefined) range = item.averagePrice;
+  else if (item.priceRange !== undefined) range = item.priceRange;
+
   return (
     <div className={styles.container}>
       <img
-        src={item.mainPhotoSrc}
+        src={photoSrc}
         alt="Resturant image"
         className={styles.image_container}
       />
@@ -27,7 +40,7 @@ function Card(props: any) {
         <h3
           className={styles.address}
         >{`${item.address.street}, ${item.address.postalCode}, ${item.address.locality}`}</h3>
-        <p>{`Avarage price range: ${item.priceRange} ${item.currenciesAccepted}`}</p>
+        <p>{`Avarage price range: ${range} ${currency}`}</p>
       </div>
     </div>
   );
