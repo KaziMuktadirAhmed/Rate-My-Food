@@ -36,3 +36,24 @@ export const setResutarantNameSearchResult = async function (searchQuery: any) {
   setData(resultToSet);
   renderContent((prev: boolean) => !prev);
 };
+
+export const setBothSearchResult = async function (
+  itemQuery: any,
+  locationQuery: any
+) {
+  console.log(
+    `searching resturants with containing '${itemQuery}' in it's title and inside ${locationQuery} ........`
+  );
+  const resultLocation = await getAllRestuarentForALocation(locationQuery);
+  const resultItem = await getAllRestuarentForAName(itemQuery);
+  console.log("location:", resultLocation);
+  console.log("resturant:", resultItem);
+
+  const filtredItemResult = resultItem
+    .filter((item) => item.restaurant !== undefined)
+    .map((item) => item.restaurant);
+
+  const finalResult = filtredItemResult.concat(resultLocation);
+  setData(finalResult);
+  renderContent((prev: boolean) => !prev);
+};

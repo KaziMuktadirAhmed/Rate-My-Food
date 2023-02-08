@@ -1,6 +1,7 @@
 import { SyntheticEvent, useRef } from "react";
 
 import {
+  setBothSearchResult,
   setLocationSearchResult,
   setResutarantNameSearchResult,
 } from "../../../controllers/content.controller";
@@ -14,11 +15,17 @@ function Searchbar() {
   const handleClick = function (event: SyntheticEvent, ...prams: any) {
     console.log("in handler");
     event.preventDefault();
-    if (locationQuery.current?.value.length)
-      setLocationSearchResult(locationQuery.current?.value);
-    if (itemQuery.current?.value.length)
-      setResutarantNameSearchResult(itemQuery.current?.value);
-  };
+
+    const locationText: string = locationQuery.current.value,
+      itemText: string = itemQuery.current.value;
+
+    if (locationText.length > 2 && itemText.length > 2)
+      setBothSearchResult(itemText, locationText);
+    else if (locationText.length > 2 && itemText.length <= 2)
+      setLocationSearchResult(locationText);
+    else if (locationText.length <= 2 && itemText.length > 2)
+      setResutarantNameSearchResult(itemText);
+
 
   return (
     <div className={styles.searchbar}>
