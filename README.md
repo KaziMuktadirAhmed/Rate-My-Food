@@ -26,7 +26,10 @@ NPM - 9.2.0 <br>
 React-app folder holds the frontend done using react library. <br>
 After running the app in developement mode goto `/search` url to see final progress. <br>
 The Home page is still in developement. <br>
-Currently only location field works in the searchbar.
+Currently the search functionality is limited. Some valid and tested search keywords:
+
+1. Location: milan, london, paris, lisbon
+2. Resturant name: burger
 
 Parcel-app folder holds the frontend done using raw javascript.
 To run the raw javascript version. <br>
