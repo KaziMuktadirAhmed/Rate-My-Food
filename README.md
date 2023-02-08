@@ -29,7 +29,7 @@ The Home page is still in developement. <br>
 Currently the search functionality is limited. Some valid and tested search keywords:
 
 1. Location: milan, london, paris, lisbon
-2. Resturant name: burger
+2. Resturant name: burger pizza sushi
 
 Parcel-app folder holds the frontend done using raw javascript.
 To run the raw javascript version. <br>
