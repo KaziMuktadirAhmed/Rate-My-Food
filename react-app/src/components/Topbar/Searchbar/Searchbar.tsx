@@ -20,27 +20,11 @@ function Searchbar() {
       itemText: string = itemQuery.current.value;
 
     if (locationText.length > 2 && itemText.length > 2)
-      // console.log(locationText.length, "both", itemText.length);
       setBothSearchResult(itemText, locationText);
     else if (locationText.length > 2 && itemText.length <= 2)
-      // console.log(locationText.length, "only location", itemText.length);
       setLocationSearchResult(locationText);
     else if (locationText.length <= 2 && itemText.length > 2)
-      // console.log(locationText.length, "only item", itemText.length);
       setResutarantNameSearchResult(itemText);
-
-    // if (
-    //   locationQuery.current?.value.length > 2 &&
-    //   itemQuery.current?.value.length > 2
-    // ) {
-    //   setBothSearchResult(
-    //     itemQuery.current?.value,
-    //     locationQuery.current?.value
-    //   );
-    // } else if (locationQuery.current?.value.length > 2)
-    //   setLocationSearchResult(itemQuery.current?.value);
-    // else if (itemQuery.current?.value.length > 2)
-    //   setResutarantNameSearchResult(itemQuery.current?.value);
   };
 
   return (
